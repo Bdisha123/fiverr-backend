@@ -24,11 +24,25 @@ const connect=async () => {
         handleError(error);
     }
 };
+//"http://localhost:5173"
+// app.use(cors({
+//     origin: "http://localhost:5173"
+//     , credentials: true
+// }));
 
 app.use(cors({
-    origin: "http://localhost:5173"
-    , credentials: true
+    origin: (origin, callback) => {
+        // Check if the request has an allowed origin
+        const allowedOrigins=["http://localhost:5173"];
+        const isAllowed=allowedOrigins.includes(origin);
+        callback(null, isAllowed? origin:false);
+    },
+    credentials: true
 }));
+
+
+
+// app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 // app.use("/api/users", userRoute);
