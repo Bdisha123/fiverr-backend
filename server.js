@@ -33,7 +33,7 @@ const connect=async () => {
 app.use(cors({
     origin: (origin, callback) => {
         // Check if the request has an allowed origin
-        const allowedOrigins=["http://localhost:5173"];
+        const allowedOrigins=["http://localhost:5173","https://64aefd03e90a461529ce0c4c--loquacious-macaron-895746.netlify.app/"];
         const isAllowed=allowedOrigins.includes(origin);
         callback(null, isAllowed? origin:false);
     },
